@@ -1,6 +1,6 @@
 Feature: Order
 
-  @Order
+  @Cart
   Scenario Outline: Add item
     Given Login page of saucedemo
     When User input standard_user in username field
@@ -16,7 +16,7 @@ Feature: Order
       | test.allthethings()-t-shirt-(red) |
 
 
-  @Order
+  @Cart
   Scenario Outline: Add and remove item
     Given Login page of saucedemo
     When User input standard_user in username field
