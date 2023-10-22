@@ -77,7 +77,12 @@ public class login {
     }
     @Then("user verify (.*) login result$")
     public void userVerifyStatusLoginResult(String status) {
-        driver.manage().timeouts().pageLoadTimeout(Duration.ofSeconds(60));
+        driver.manage().timeouts().pageLoadTimeout(Duration.ofSeconds(300));
+        try {
+            Thread.sleep(4000);
+        } catch (InterruptedException e) {
+            Thread.currentThread().interrupt();
+        }
         String errorLogin ;
         switch (status){
             case "success" :
@@ -96,6 +101,7 @@ public class login {
                     System.out.println("Sidebar found");
                     String logout_button = driver.findElement(By.id("logout_sidebar_link")).getText();
                     Assert.assertEquals(logout_button, "Logout");
+                driver.findElement(By.xpath("//*[@id='react-burger-cross-btn']")).click();
 
 
                 break;
@@ -171,20 +177,28 @@ public class login {
 
     }
 
+    @Then("User click burger button")
+    public void userClickBurgerButton() {
+        try {
+            Thread.sleep(5000);
+        } catch (InterruptedException e) {
+            Thread.currentThread().interrupt();
+        }
+        driver.findElement(By.xpath("//*[@id='react-burger-menu-btn']")).isDisplayed();
+        driver.findElement(By.xpath("//*[@id='react-burger-menu-btn']")).click();
+    }
 
     @Then("User click Logout button")
     public void userClickLogoutButton() {
 
-            System.out.println("print burger");
-            driver.findElement(By.xpath("//*[@id='react-burger-menu-btn']")).click();
 
         try {
-            Thread.sleep(1000);
+            Thread.sleep(5000);
         } catch (InterruptedException e) {
             Thread.currentThread().interrupt();
         }
 
-            System.out.println("Sidebar found");
+                driver.findElement(By.xpath("//*[@id='logout_sidebar_link']")).isDisplayed();
             driver.findElement(By.xpath("//*[@id='logout_sidebar_link']")).click();
 
 
@@ -277,4 +291,6 @@ public class login {
 
         }
     }
+
+
 }

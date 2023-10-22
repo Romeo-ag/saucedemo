@@ -7,6 +7,7 @@ Feature: Logout User Saucedemo
     And User input <password> in password field
     And User click login button
     Then user verify <status> login result
+    Then User click burger button
     Then User click Logout button
     Then User verify login page of saucedemo
 
