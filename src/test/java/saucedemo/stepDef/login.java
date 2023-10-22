@@ -101,6 +101,12 @@ public class login {
                     System.out.println("Sidebar found");
                     String logout_button = driver.findElement(By.id("logout_sidebar_link")).getText();
                     Assert.assertEquals(logout_button, "Logout");
+                                try {
+                    Thread.sleep(5000);
+                } catch (InterruptedException e) {
+                    Thread.currentThread().interrupt();
+                }
+                driver.findElement(By.xpath("//*[@id='react-burger-cross-btn']")).isDisplayed();
                 driver.findElement(By.xpath("//*[@id='react-burger-cross-btn']")).click();
 
 
